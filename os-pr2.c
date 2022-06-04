@@ -6,6 +6,7 @@
 #include <string.h>
 
 char thread1part[100000],thread2part[100000],thread3part[100000],thread4part[100000];
+int t1WCount,t2WCount,t3WCount,t4WCount;
 char word[100];
 char arr[100];
 pthread_mutex_t lock;
@@ -14,36 +15,46 @@ FILE * file1;
 void *thread1Function(void* arg){
     pthread_mutex_lock(&lock);
     file1 = fopen("out.txt","w");
-    int i = 0,j = 0;
+    int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
     file = fopen("wordlist.txt","r");
     while(fgets(word, sizeof(word), file)){
-        while(i<strlen(thread1part)){
-            if(thread1part[i] == ' ' || thread1part[i] == '\0')
-                break;
-            ////copy word to third array
-            arr[j++] = thread1part[i++];
+        ///printf("%s\n",word );
+        while(thread1part[i] != '\0'){
+            while(i<strlen(thread1part)){
+                if(thread1part[i] == ' ' || thread1part[i] == '\0' || thread1part[i] == '\n'){
+                    break;
+                }
+
+                ////copy word to third array
+                arr[j++] = thread1part[i++];
+            }
+            arr[j] = '\0';
+            j = 0;
+            /////if word mached, flag turns true
+            if(strstr(word,arr)){
+                flag = 1;
+            }
+            i++;
         }
-        arr[j] = '\0';
-        j = 0;
-        /////if word mached, flag turns true
-        if(strcmp(word,arr) == 0)
-            flag = 1;
-        i++;
         ////write in file
         if(flag == 1){
             time_t t;
             time(&t);
-            fprintf(file1, "%s : \n", word);
-            fprintf(file1,"this word hase been found at : %s\n", ctime(&t));
+            fprintf(file1, "%s", word);
+            fprintf(file1,"this word hase been found at : %s", ctime(&t));
             fprintf(file1, "thread 1 found this word\n");
             time(&t);
             fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-            printf("%s found withh thread1\n", word);
+            ///printf("%s found withh thread1\n", word);
 
         }
         flag = -1;
+        k++;
+        i = 0;
+
+        k = 0;
     }
     pthread_mutex_unlock(&lock);
     return 0;
@@ -52,36 +63,46 @@ void *thread1Function(void* arg){
 void *thread2Function(void* arg){
     pthread_mutex_lock(&lock);
     file1 = fopen("out.txt","w");
-    int i = 0,j = 0;
+    int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
     file = fopen("wordlist.txt","r");
     while(fgets(word, sizeof(word), file)){
-        while(i<strlen(thread2part)){
-            if(thread2part[i] == ' ' || thread2part[i] == '\0')
-                break;
-            ////copy word to third array
-            arr[j++] = thread2part[i++];
+        ///printf("%s\n",word );
+        while(thread2part[i] != '\0'){
+            while(i<strlen(thread2part)){
+                if(thread2part[i] == ' ' || thread2part[i] == '\0' || thread2part[i] == '\n'){
+                    break;
+                }
+
+                ////copy word to third array
+                arr[j++] = thread2part[i++];
+            }
+            arr[j] = '\0';
+            j = 0;
+            /////if word mached, flag turns true
+            if(strstr(word,arr)){
+                flag = 1;
+            }
+            i++;
         }
-        arr[j] = '\0';
-        j = 0;
-        /////if word mached, flag turns true
-        if(strcmp(word,arr) == 0)
-            flag = 1;
-        i++;
         ////write in file
         if(flag == 1){
-            // time_t t;
-            // time(&t);
-            // fprintf(file1, "%s : \n", word);
-            // fprintf(file1,"this word hase been found at : %s\n", ctime(&t));
-            // fprintf(file1, "thread 2 found this word\n");
-            // time(&t);
-            // fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-            printf("%s found withh thread1\n", word);
+            time_t t;
+            time(&t);
+            fprintf(file1, "%s", word);
+            fprintf(file1,"this word hase been found at : %s", ctime(&t));
+            fprintf(file1, "thread 2 found this word\n");
+            time(&t);
+            fprintf(file1, "time of writing in file %s\n",ctime(&t) );
+            ///printf("%s found withh thread1\n", word);
 
         }
         flag = -1;
+        k++;
+        i = 0;
+
+        k = 0;
     }
     pthread_mutex_unlock(&lock);
     return 0;
@@ -89,38 +110,47 @@ void *thread2Function(void* arg){
 
 void *thread3Function(void* arg){
     pthread_mutex_lock(&lock);
-    int i = 0,j = 0;
     file1 = fopen("out.txt","w");
+    int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
     file = fopen("wordlist.txt","r");
-
     while(fgets(word, sizeof(word), file)){
-        while(i<strlen(thread3part)){
-            if(thread3part[i] == ' ' || thread3part[i] == '\0')
-                break;
-            ////copy word to third array
-            arr[j++] = thread3part[i++];
+        ///printf("%s\n",word );
+        while(thread3part[i] != '\0'){
+            while(i<strlen(thread1part)){
+                if(thread3part[i] == ' ' || thread3part[i] == '\0' || thread3part[i] == '\n'){
+                    break;
+                }
+
+                ////copy word to third array
+                arr[j++] = thread3part[i++];
+            }
+            arr[j] = '\0';
+            j = 0;
+            /////if word mached, flag turns true
+            if(strstr(word,arr)){
+                flag = 1;
+            }
+            i++;
         }
-        arr[j] = '\0';
-        j = 0;
-        /////if word mached, flag turns true
-        if(strcmp(word,arr) == 0)
-            flag = 1;
-        i++;
         ////write in file
         if(flag == 1){
-            // time_t t;
-            // time(&t);
-            // fprintf(file1, "%s : \n", word);
-            // fprintf(file1,"this word hase been found at : %s\n", ctime(&t));
-            // fprintf(file1, "thread 3 found this word\n");
-            // time(&t);
-            // fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-            printf("%s found withh thread1\n", word);
+            time_t t;
+            time(&t);
+            fprintf(file1, "%s", word);
+            fprintf(file1,"this word hase been found at : %s", ctime(&t));
+            fprintf(file1, "thread 3 found this word\n");
+            time(&t);
+            fprintf(file1, "time of writing in file %s\n",ctime(&t) );
+            ///printf("%s found withh thread1\n", word);
 
         }
         flag = -1;
+        k++;
+        i = 0;
+
+        k = 0;
     }
     pthread_mutex_unlock(&lock);
     return 0;
@@ -129,37 +159,46 @@ void *thread3Function(void* arg){
 void *thread4Function(void* arg){
     pthread_mutex_lock(&lock);
     file1 = fopen("out.txt","w");
-    int i = 0,j = 0;
+    int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
     file = fopen("wordlist.txt","r");
-
     while(fgets(word, sizeof(word), file)){
-        while(i<strlen(thread1part)){
-            if(thread4part[i] == ' ' || thread4part[i] == '\0')
-                break;
-            ////copy word to third array
-            arr[j++] = thread4part[i++];
+        ///printf("%s\n",word );
+        while(thread4part[i] != '\0'){
+            while(i<strlen(thread4part)){
+                if(thread4part[i] == ' ' || thread4part[i] == '\0' || thread4part[i] == '\n'){
+                    break;
+                }
+
+                ////copy word to third array
+                arr[j++] = thread4part[i++];
+            }
+            arr[j] = '\0';
+            j = 0;
+            /////if word mached, flag turns true
+            if(strstr(word,arr)){
+                flag = 1;
+            }
+            i++;
         }
-        arr[j] = '\0';
-        j = 0;
-        /////if word mached, flag turns true
-        if(strcmp(word,arr) == 0)
-            flag = 1;
-        i++;
         ////write in file
         if(flag == 1){
-            // time_t t;
-            // time(&t);
-            // fprintf(file1, "%s : \n", word);
-            // fprintf(file1,"this word hase been found at : %s\n", ctime(&t));
-            // fprintf(file1, "thread 4 found this word\n");
-            // time(&t);
-            // fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-            printf("%s found withh thread1\n", word);
+            time_t t;
+            time(&t);
+            fprintf(file1, "%s", word);
+            fprintf(file1,"this word hase been found at : %s", ctime(&t));
+            fprintf(file1, "thread 4 found this word\n");
+            time(&t);
+            fprintf(file1, "time of writing in file %s\n",ctime(&t) );
+            ///printf("%s found withh thread1\n", word);
 
         }
         flag = -1;
+        k++;
+        i = 0;
+
+        k = 0;
     }
     pthread_mutex_unlock(&lock);
     return 0;
@@ -232,8 +271,7 @@ int main(){
 
     int count;
     count = wordCount();
-    int t1WCount,t2WCount,t3WCount,t4WCount;
-    pthread_t tid1,tid2,tid3;
+    pthread_t tid1,tid2,tid3,tid4;
 
     t1WCount = count/4;
     t2WCount = count/4;
@@ -251,10 +289,12 @@ int main(){
     pthread_create(&tid1,NULL,thread1Function,NULL);
     pthread_create(&tid2,NULL,thread2Function,NULL);
     pthread_create(&tid3,NULL,thread3Function,NULL);
+    pthread_create(&tid4,NULL,thread4Function,NULL);
 
     pthread_join(tid1,NULL);
     pthread_join(tid2,NULL);
     pthread_join(tid3,NULL);
+    pthread_join(tid4,NULL);
 
     return 0;
 }
