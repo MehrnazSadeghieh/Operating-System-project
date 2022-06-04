@@ -20,7 +20,7 @@ void *thread1Function(void* arg){
     file = fopen("wordlist.txt","r");
     while(fgets(word, sizeof(word), file)){
         while(i<strlen(thread1part)){
-            if(thread1part[i] == ' ' || thread1part[i] == '\0' || thread1part[i] == '\0')
+            if(thread1part[i] == ' ' || thread1part[i] == '\0')
                 break;
             ////copy word to third array
             arr[j++] = thread1part[i++];
@@ -56,9 +56,9 @@ void *thread2Function(void* arg){
     int flag = -1;
     FILE * file;
     file = fopen("wordlist.txt","r");
-        while(fgets(word, sizeof(word), file)){
+    while(fgets(word, sizeof(word), file)){
         while(i<strlen(thread2part)){
-            if(thread2part[i] == ' ' || thread2part[i] == '\0' || thread2part[i] == '\0')
+            if(thread2part[i] == ' ' || thread2part[i] == '\0')
                 break;
             ////copy word to third array
             arr[j++] = thread2part[i++];
@@ -97,7 +97,7 @@ void *thread3Function(void* arg){
 
     while(fgets(word, sizeof(word), file)){
         while(i<strlen(thread3part)){
-            if(thread3part[i] == ' ' || thread3part[i] == '\0' || thread3part[i] == '\0')
+            if(thread3part[i] == ' ' || thread3part[i] == '\0')
                 break;
             ////copy word to third array
             arr[j++] = thread3part[i++];
@@ -136,7 +136,7 @@ void *thread4Function(void* arg){
 
     while(fgets(word, sizeof(word), file)){
         while(i<strlen(thread1part)){
-            if(thread4part[i] == ' ' || thread4part[i] == '\0' || thread4part[i] == '\0')
+            if(thread4part[i] == ' ' || thread4part[i] == '\0')
                 break;
             ////copy word to third array
             arr[j++] = thread4part[i++];
