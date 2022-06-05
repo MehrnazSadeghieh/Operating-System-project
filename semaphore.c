@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include <time.h>
 #include <string.h>
-#include <semaphre.h>
+#include <semaphore.h>
 
 char thread1part[100000],thread2part[100000],thread3part[100000],thread4part[100000];
 int t1WCount,t2WCount,t3WCount,t4WCount;
@@ -15,7 +15,7 @@ FILE * file1;
 
 void *thread1Function(void* arg){
     sem_wait(&mutex);
-    file1 = fopen("out.txt","w");
+    file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
@@ -63,7 +63,7 @@ void *thread1Function(void* arg){
 
 void *thread2Function(void* arg){
     sem_wait(&mutex);
-    file1 = fopen("out.txt","w");
+    file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
@@ -111,7 +111,7 @@ void *thread2Function(void* arg){
 
 void *thread3Function(void* arg){
     sem_wait(&mutex);
-    file1 = fopen("out.txt","w");
+    file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
@@ -159,7 +159,7 @@ void *thread3Function(void* arg){
 
 void *thread4Function(void* arg){
     sem_wait(&mutex);
-    file1 = fopen("out.txt","w");
+    file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0,k = 0;
     int flag = -1;
     FILE * file;
@@ -285,7 +285,7 @@ int main(){
     printf("%s\n", thread3part);
     printf("%s\n", thread4part);
 
-    ///file1 = fopen("out.txt","w");
+    ///file1 = fopen("semaphoreout.txt","w");
 
     pthread_create(&tid1,NULL,thread1Function,NULL);
     //sleep(1);
