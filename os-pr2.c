@@ -286,11 +286,11 @@ int main(){
     ///file1 = fopen("out.txt","w");
 
     pthread_create(&tid1,NULL,thread1Function,NULL);
-    sleep(1);
+    //sleep(1);
     pthread_create(&tid2,NULL,thread2Function,NULL);
-    sleep(1);
+    //sleep(1);
     pthread_create(&tid3,NULL,thread3Function,NULL);
-    sleep(1);
+    //sleep(1);
     pthread_create(&tid4,NULL,thread4Function,NULL);
 
     pthread_join(tid1,NULL);
