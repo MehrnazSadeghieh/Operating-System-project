@@ -4,7 +4,6 @@
 #include <pthread.h>
 #include <time.h>
 #include <string.h>
-
 char thread1part[100000],thread2part[100000],thread3part[100000],thread4part[100000];
 int t1WCount,t2WCount,t3WCount,t4WCount;
 char word[100];
@@ -287,8 +286,11 @@ int main(){
     ///file1 = fopen("out.txt","w");
 
     pthread_create(&tid1,NULL,thread1Function,NULL);
+    sleep(1);
     pthread_create(&tid2,NULL,thread2Function,NULL);
+    sleep(1);
     pthread_create(&tid3,NULL,thread3Function,NULL);
+    sleep(1);
     pthread_create(&tid4,NULL,thread4Function,NULL);
 
     pthread_join(tid1,NULL);
