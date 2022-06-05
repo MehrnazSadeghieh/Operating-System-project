@@ -1,45 +1,14 @@
-Avicenna
-this word hase been found at : Sun Jun  5 10:49:25 2022
+proje
+proje
+this word has been found at : Mon Jun  6 00:36:01 2022
+thread 2 found this word
+this word has been found at : Mon Jun  6 00:36:01 2022
 thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
+time of writing in file Mon Jun  6 00:36:01 2022
 
-Persia
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
+time of writing in file Mon Jun  6 00:36:01 2022
 
-Iraq
-this word hase been found at : Sun Jun  5 10:49:25 2022
+semaphorethis word has been found at : Mon Jun  6 00:36:01 2022
 thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-cultural
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-world
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-libraries
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-Khorasan
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-capital
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
-
-atmosphere
-this word hase been found at : Sun Jun  5 10:49:25 2022
-thread 4 found this word
-time of writing in file Sun Jun  5 10:49:25 2022
+time of writing in file Mon Jun  6 00:36:01 2022
 

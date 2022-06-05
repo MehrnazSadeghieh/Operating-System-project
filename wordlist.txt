@@ -1,9 +1,4 @@
-Avicenna
-Persia
-Iraq
-cultural
-world
-libraries
-Khorasan
-capital
-atmosphere
+salam
+proje
+motor
+semaphore
