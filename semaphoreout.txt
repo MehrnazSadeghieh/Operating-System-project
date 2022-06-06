@@ -1,10 +1,8 @@
-salam
-this word has been found at : Mon Jun  6 15:33:59 2022
-thread 1 found this word
-time of writing in file Mon Jun  6 15:33:59 2022
-this word is at line number 1
-proje
-this word has been found at : Mon Jun  6 15:33:59 2022
-thread 1 found this word
-time of writing in file Mon Jun  6 15:33:59 2022
-this word is at line number 1
+3-word: semaphore - time: Mon Jun  6 15:56:06 2022
+ - line : 3
+4-word: semaphore - time: Mon Jun  6 15:56:06 2022
+ - line : 4
+1-word: semaphore - time: Mon Jun  6 15:56:06 2022
+ - line : 1
+2-word: semaphore - time: Mon Jun  6 15:56:06 2022
+ - line : 2

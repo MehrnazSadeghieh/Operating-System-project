@@ -13,9 +13,11 @@ char word[100];
 char arr[100];
 sem_t  mutex;
 FILE * file1;
+pthread_mutex_t lock;
 
 void *thread1Function(void* arg){
-    sem_wait(&mutex);
+    pthread_mutex_lock(&lock);
+    //sem_wait(&mutex);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -45,12 +47,12 @@ void *thread1Function(void* arg){
             if(flag == 1){
                 time_t t;
                 time(&t);
-                fprintf(file1, "%s", word);
-                fprintf(file1,"this word has been found at : %s", ctime(&t));
-                fprintf(file1, "thread 1 found this word\n");
-                time(&t);
-                fprintf(file1, "time of writing in file %s",ctime(&t) );
-                fprintf(file1, "this word is at line number %c\n", thread1line[i]);
+                fprintf(file1, "1-word: %s - time: %s - line : %c\n", word,ctime(&t),thread1line[i]);
+                // fprintf(file1,"this word has been found at : %s", ctime(&t));
+                // fprintf(file1, "thread 1 found this word\n");
+                // time(&t);
+                // fprintf(file1, "time of writing in file %s",ctime(&t) );
+                // fprintf(file1, "this word is at line number %c\n", thread1line[i]);
                 ///printf("%s found withh thread1\n", word);
 
             }
@@ -63,12 +65,14 @@ void *thread1Function(void* arg){
         i = 0;
 
     }
-    sem_post(&mutex);
-    return 0;
+    //sem_post(&mutex);
+    pthread_mutex_unlock(&lock);
+    // return 0;
 }
 
 void *thread2Function(void* arg){
-    sem_wait(&mutex);
+    //sem_wait(&mutex);
+    pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -98,12 +102,14 @@ void *thread2Function(void* arg){
             if(flag == 1){
                 time_t t;
                 time(&t);
-                fprintf(file1, "%s", word);
-                fprintf(file1,"this word has been found at : %s", ctime(&t));
-                fprintf(file1, "thread 2 found this word\n");
-                time(&t);
-                fprintf(file1, "time of writing in file %s",ctime(&t) );
-                fprintf(file1, "this word is at line number %c\n", thread2line[i]);                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "2-word: %s - time: %s - line : %c\n", word,ctime(&t),thread2line[i]);
+                // fprintf(file1, "%s", word);
+                // fprintf(file1,"this word has been found at : %s", ctime(&t));
+                // fprintf(file1, "thread 2 found this word\n");
+                // time(&t);
+                // fprintf(file1, "time of writing in file %s",ctime(&t) );
+                // fprintf(file1, "this word is at line number %c\n", thread2line[i]);                
+                ///printf("%s found withh thread1\n", word);
 
             }
             // printf("%d\n\n", flag);
@@ -115,12 +121,14 @@ void *thread2Function(void* arg){
         i = 0;
 
     }
-    sem_post(&mutex);
-    return 0;
+    //sem_post(&mutex);
+    pthread_mutex_unlock(&lock);
+    // return 0;
 }
 
 void *thread3Function(void* arg){
-    sem_wait(&mutex);
+    //sem_wait(&mutex);
+    pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -150,12 +158,13 @@ void *thread3Function(void* arg){
             if(flag == 1){
                 time_t t;
                 time(&t);
-                fprintf(file1, "%s", word);
-                fprintf(file1,"this word has been found at : %s", ctime(&t));
-                fprintf(file1, "thread 3 found this word\n");
-                time(&t);
-                fprintf(file1, "time of writing in file %s",ctime(&t) );
-                fprintf(file1, "this word is at line number %c\n", thread3line[i]);                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "3-word: %s - time: %s - line : %c\n", word,ctime(&t),thread3line[i]);
+                // fprintf(file1, "%s", word);
+                // fprintf(file1,"this word has been found at : %s", ctime(&t));
+                // fprintf(file1, "thread 3 found this word\n");
+                // time(&t);
+                // fprintf(file1, "time of writing in file %s",ctime(&t) );
+                // fprintf(file1, "this word is at line number %c\n", thread3line[i]);                ///printf("%s found withh thread1\n", word);
 
             }
             // printf("%d\n\n", flag);
@@ -167,12 +176,14 @@ void *thread3Function(void* arg){
         i = 0;
 
     }
-    sem_post(&mutex);
-    return 0;
+    //sem_post(&mutex);
+    pthread_mutex_unlock(&lock);
+    
 }
 
 void *thread4Function(void* arg){
-    sem_wait(&mutex);
+    //sem_wait(&mutex);
+    pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -202,12 +213,13 @@ void *thread4Function(void* arg){
             if(flag == 1){
                 time_t t;
                 time(&t);
-                fprintf(file1, "%s", word);
-                fprintf(file1,"this word has been found at : %s", ctime(&t));
-                fprintf(file1, "thread 4 found this word\n");
-                time(&t);
-                fprintf(file1, "time of writing in file %s",ctime(&t) );
-                fprintf(file1, "this word is at line number %c\n", thread4line[i]);                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "4-word: %s - time: %s - line : %c\n", word,ctime(&t),thread4line[i]);
+                // fprintf(file1, "%s", word);
+                // fprintf(file1,"this word has been found at : %s", ctime(&t));
+                // fprintf(file1, "thread 4 found this word\n");
+                // time(&t);
+                // fprintf(file1, "time of writing in file %s",ctime(&t) );
+                // fprintf(file1, "this word is at line number %c\n", thread4line[i]);                ///printf("%s found withh thread1\n", word);
 
             }
             //printf("%d\n\n", flag);
@@ -219,8 +231,9 @@ void *thread4Function(void* arg){
         i = 0;
 
     }
-    sem_post(&mutex);
-    return 0;
+    //sem_post(&mutex);
+    pthread_mutex_unlock(&lock);
+    
 }
 
 
@@ -326,7 +339,8 @@ int main(){
     t3WCount = count/4;
     t4WCount = count - (3*count/4);
 
-    ///sem_init(&mutex,0,1);
+    ///sem_init(&mutex,0,4);
+
 
     threadpartstring(thread1part,thread2part,thread3part,thread4part,t1WCount,t2WCount,t3WCount,t4WCount);
     printf("1111%s\n", thread1part);
@@ -338,16 +352,16 @@ int main(){
 
     pthread_create(&tid1,NULL,thread1Function,NULL);
     ///sleep(1);
-    //pthread_create(&tid2,NULL,thread2Function,NULL);
+    pthread_create(&tid2,NULL,thread2Function,NULL);
     ///sleep(1);
-    ///pthread_create(&tid3,NULL,thread3Function,NULL);
+    pthread_create(&tid3,NULL,thread3Function,NULL);
     ///sleep(1);
-    //pthread_create(&tid4,NULL,thread4Function,NULL);
+    pthread_create(&tid4,NULL,thread4Function,NULL);
 
     pthread_join(tid1,NULL);
-    //pthread_join(tid2,NULL);
-    //pthread_join(tid3,NULL);
-    //pthread_join(tid4,NULL);
+    pthread_join(tid2,NULL);
+    pthread_join(tid3,NULL);
+    pthread_join(tid4,NULL);
 
     fclose(file1);
     return 0;
