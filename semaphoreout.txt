@@ -1,8 +1,12 @@
-3-word: semaphore - time: Mon Jun  6 15:56:06 2022
- - line : 3
-4-word: semaphore - time: Mon Jun  6 15:56:06 2022
+4-word: salam
+ - time: Mon Jun  6 21:34:31 2022
  - line : 4
-1-word: semaphore - time: Mon Jun  6 15:56:06 2022
- - line : 1
-2-word: semaphore - time: Mon Jun  6 15:56:06 2022
+4-word: semaphore - time: Mon Jun  6 21:34:31 2022
+ - line : 4
+2-word: semaphore - time: Mon Jun  6 21:34:31 2022
  - line : 2
+1-word: semaphore - time: Mon Jun  6 21:34:31 2022
+ - line : 1
+1-word: proje
+ - time: Mon Jun  6 21:34:31 2022
+ - line : 1

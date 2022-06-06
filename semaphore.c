@@ -16,8 +16,8 @@ FILE * file1;
 pthread_mutex_t lock;
 
 void *thread1Function(void* arg){
-    pthread_mutex_lock(&lock);
-    //sem_wait(&mutex);
+    //pthread_mutex_lock(&lock);
+    sem_wait(&mutex);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -65,14 +65,14 @@ void *thread1Function(void* arg){
         i = 0;
 
     }
-    //sem_post(&mutex);
-    pthread_mutex_unlock(&lock);
+    sem_post(&mutex);
+    //pthread_mutex_unlock(&lock);
     // return 0;
 }
 
 void *thread2Function(void* arg){
-    //sem_wait(&mutex);
-    pthread_mutex_lock(&lock);
+    sem_wait(&mutex);
+    //pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -121,14 +121,14 @@ void *thread2Function(void* arg){
         i = 0;
 
     }
-    //sem_post(&mutex);
-    pthread_mutex_unlock(&lock);
+    sem_post(&mutex);
+    //pthread_mutex_unlock(&lock);
     // return 0;
 }
 
 void *thread3Function(void* arg){
-    //sem_wait(&mutex);
-    pthread_mutex_lock(&lock);
+    sem_wait(&mutex);
+    //pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -176,14 +176,14 @@ void *thread3Function(void* arg){
         i = 0;
 
     }
-    //sem_post(&mutex);
-    pthread_mutex_unlock(&lock);
+    sem_post(&mutex);
+    //pthread_mutex_unlock(&lock);
     
 }
 
 void *thread4Function(void* arg){
-    //sem_wait(&mutex);
-    pthread_mutex_lock(&lock);
+    sem_wait(&mutex);
+    //pthread_mutex_lock(&lock);
     //file1 = fopen("semaphoreout.txt","w");
     int i = 0,j = 0;
     int flag = -1;
@@ -339,14 +339,14 @@ int main(){
     t3WCount = count/4;
     t4WCount = count - (3*count/4);
 
-    ///sem_init(&mutex,0,4);
+    sem_init(&mutex,0,1);
 
 
     threadpartstring(thread1part,thread2part,thread3part,thread4part,t1WCount,t2WCount,t3WCount,t4WCount);
-    printf("1111%s\n", thread1part);
-    printf("2222%s\n", thread2part);
-    printf("3333%s\n", thread3part);
-    printf("4444%s\n", thread4part);
+    // printf("1111%s\n", thread1part);
+    // printf("2222%s\n", thread2part);
+    // printf("3333%s\n", thread3part);
+    // printf("4444%s\n", thread4part);
 
     file1 = fopen("semaphoreout.txt","w");
 
