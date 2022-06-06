@@ -1,24 +1,10 @@
 salam
-proje
-motor
-this word has been found at : Mon Jun  6 00:32:01 2022
+this word has been found at : Mon Jun  6 15:33:59 2022
 thread 1 found this word
-this word has been found at : Mon Jun  6 00:32:01 2022
-thread 4 found this word
-time of writing in file Mon Jun  6 00:32:01 2022
-
+time of writing in file Mon Jun  6 15:33:59 2022
+this word is at line number 1
 proje
-time of writing in file Mon Jun  6 00:32:01 2022
-
-this word has been found at : Mon Jun  6 00:32:01 2022
-thread 2 found this word
-this word has been found at : Mon Jun  6 00:32:01 2022
+this word has been found at : Mon Jun  6 15:33:59 2022
 thread 1 found this word
-semaphoretime of writing in file Mon Jun  6 00:32:01 2022
-
-time of writing in file Mon Jun  6 00:32:01 2022
-
-this word has been found at : Mon Jun  6 00:32:01 2022
-thread 4 found this word
-time of writing in file Mon Jun  6 00:32:01 2022
-
+time of writing in file Mon Jun  6 15:33:59 2022
+this word is at line number 1

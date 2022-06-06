@@ -7,6 +7,7 @@
 #include <semaphore.h>
 
 char thread1part[100000],thread2part[100000],thread3part[100000],thread4part[100000];
+int thread1line[100000],thread2line[100000],thread3line[100000],thread4line[100000];
 int t1WCount,t2WCount,t3WCount,t4WCount;
 char word[100];
 char arr[100];
@@ -48,7 +49,8 @@ void *thread1Function(void* arg){
                 fprintf(file1,"this word has been found at : %s", ctime(&t));
                 fprintf(file1, "thread 1 found this word\n");
                 time(&t);
-                fprintf(file1, "time of writing in file %s\n",ctime(&t) );
+                fprintf(file1, "time of writing in file %s",ctime(&t) );
+                fprintf(file1, "this word is at line number %c\n", thread1line[i]);
                 ///printf("%s found withh thread1\n", word);
 
             }
@@ -100,8 +102,8 @@ void *thread2Function(void* arg){
                 fprintf(file1,"this word has been found at : %s", ctime(&t));
                 fprintf(file1, "thread 2 found this word\n");
                 time(&t);
-                fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "time of writing in file %s",ctime(&t) );
+                fprintf(file1, "this word is at line number %c\n", thread2line[i]);                ///printf("%s found withh thread1\n", word);
 
             }
             // printf("%d\n\n", flag);
@@ -152,8 +154,8 @@ void *thread3Function(void* arg){
                 fprintf(file1,"this word has been found at : %s", ctime(&t));
                 fprintf(file1, "thread 3 found this word\n");
                 time(&t);
-                fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "time of writing in file %s",ctime(&t) );
+                fprintf(file1, "this word is at line number %c\n", thread3line[i]);                ///printf("%s found withh thread1\n", word);
 
             }
             // printf("%d\n\n", flag);
@@ -204,8 +206,8 @@ void *thread4Function(void* arg){
                 fprintf(file1,"this word has been found at : %s", ctime(&t));
                 fprintf(file1, "thread 4 found this word\n");
                 time(&t);
-                fprintf(file1, "time of writing in file %s\n",ctime(&t) );
-                ///printf("%s found withh thread1\n", word);
+                fprintf(file1, "time of writing in file %s",ctime(&t) );
+                fprintf(file1, "this word is at line number %c\n", thread4line[i]);                ///printf("%s found withh thread1\n", word);
 
             }
             //printf("%d\n\n", flag);
@@ -241,12 +243,18 @@ void threadpartstring(char arr1[], char arr2[], char arr3[], char arr4[], int co
     int n = 0;
     char ch;
     int i = 0, j = 0;
+    int line = 1;
     ////thread1part
     while(i < count1){
         ch = fgetc(file);
         arr1[j] = ch;
         if(ch == ' ' || ch == '\n')
             i++;
+        if(ch == '\n'){
+            line++;
+            ///printf("%d\n",line);
+        }
+        thread1line[j] = line + '0';
         j++;
     }
     ////thread2part
@@ -257,6 +265,11 @@ void threadpartstring(char arr1[], char arr2[], char arr3[], char arr4[], int co
         arr2[j] = ch;
         if(ch == ' ' || ch == '\n')
             i++;
+        if(ch == '\n'){
+            line++;
+            ///printf("%d\n",line);
+        }
+        thread2line[j] = line + '0';
         j++;
     }
     ////thread3part
@@ -267,6 +280,11 @@ void threadpartstring(char arr1[], char arr2[], char arr3[], char arr4[], int co
         arr3[j] = ch;
         if(ch == ' ' || ch == '\n')
             i++;
+        if(ch == '\n'){
+            line++;
+            ///printf("%d\n",line);
+        }
+        thread3line[j] = line + '0';
         j++;
     }
     ////thread4part
@@ -277,19 +295,24 @@ void threadpartstring(char arr1[], char arr2[], char arr3[], char arr4[], int co
         arr4[j] = ch;
         if(ch == ' ' || ch == '\n')
             i++;
+        if(ch == '\n'){
+            line++;
+            ///printf("%d\n",line);
+        }
+        thread4line[j] = line + '0';
         j++;
     }
     fclose(file);
 }
 
-int my_strcmp(const char *a, const char *b)
-{
-    while (*a && *a == *b) { 
-        ++a;
-        ++b;
-    }
-    return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
-}
+// int my_strcmp(const char *a, const char *b)
+// {
+//     while (*a && *a == *b) { 
+//         ++a;
+//         ++b;
+//     }
+//     return (int)(unsigned char)(*a) - (int)(unsigned char)(*b);
+// }
 
 
 int main(){
@@ -315,16 +338,16 @@ int main(){
 
     pthread_create(&tid1,NULL,thread1Function,NULL);
     ///sleep(1);
-    pthread_create(&tid2,NULL,thread2Function,NULL);
+    //pthread_create(&tid2,NULL,thread2Function,NULL);
     ///sleep(1);
-    pthread_create(&tid3,NULL,thread3Function,NULL);
+    ///pthread_create(&tid3,NULL,thread3Function,NULL);
     ///sleep(1);
-    pthread_create(&tid4,NULL,thread4Function,NULL);
+    //pthread_create(&tid4,NULL,thread4Function,NULL);
 
     pthread_join(tid1,NULL);
-    pthread_join(tid2,NULL);
-    pthread_join(tid3,NULL);
-    pthread_join(tid4,NULL);
+    //pthread_join(tid2,NULL);
+    //pthread_join(tid3,NULL);
+    //pthread_join(tid4,NULL);
 
     fclose(file1);
     return 0;
